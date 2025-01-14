@@ -1,12 +1,16 @@
 package br.com.barbosa.transaction.entities;
 
 import lombok.Data;
+import lombok.Getter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
+@Getter
 @Document(collection = "transactions")
 public class Transaction {
+
     @Id
     private String id;
     private String date;
@@ -14,7 +18,9 @@ public class Transaction {
     private Double value;
     private String type;
     private String categoryId;
-    private String categoryName;
+
+    @DBRef
+    private Category category;
 
     public Transaction() {
     }
@@ -26,6 +32,6 @@ public class Transaction {
         this.value = value;
         this.type = type;
         this.categoryId = categoryId;
-        this.categoryName = categoryName;
     }
+
 }

@@ -6,7 +6,6 @@ spring:
     mongodb:
       uri: mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@cluster0.8ipmu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
       database: financesdb
-      
 
   jpa:
     hibernate:

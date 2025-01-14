@@ -30,6 +30,14 @@ public class TransactionController {
         return transactionService.saveTransaction(transaction);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Transaction> updateTransaction(
+            @PathVariable String id,
+            @RequestBody Transaction updatedTransaction) {
+        Transaction transaction = transactionService.updateTransaction(id, updatedTransaction);
+        return ResponseEntity.ok(transaction);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteTransaction(@PathVariable String id) {
         transactionService.deleteTransaction(id);
