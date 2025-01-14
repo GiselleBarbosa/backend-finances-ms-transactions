@@ -1,1 +1,14 @@
-spring.application.name=finances-ms-transactions
+spring:
+  application:
+    name: ms-finances-transactions
+
+  data:
+    mongodb:
+      uri: mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@cluster0.8ipmu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      database: financesdb
+      
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
