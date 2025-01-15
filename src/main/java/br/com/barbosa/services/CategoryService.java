@@ -1,7 +1,7 @@
-package br.com.barbosa.transaction.services;
+package br.com.barbosa.services;
 
-import br.com.barbosa.transaction.entities.Category;
-import br.com.barbosa.transaction.repositories.CategoryRepository;
+import br.com.barbosa.entities.Category;
+import br.com.barbosa.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

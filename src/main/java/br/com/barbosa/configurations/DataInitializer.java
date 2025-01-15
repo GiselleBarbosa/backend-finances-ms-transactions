@@ -1,7 +1,7 @@
 package br.com.barbosa.configurations;
 
-import br.com.barbosa.transaction.entities.Category;
-import br.com.barbosa.transaction.repositories.CategoryRepository;
+import br.com.barbosa.entities.Category;
+import br.com.barbosa.repositories.CategoryRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;

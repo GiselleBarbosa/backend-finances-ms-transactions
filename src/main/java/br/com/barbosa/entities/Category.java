@@ -1,4 +1,4 @@
-package br.com.barbosa.transaction.entities;
+package br.com.barbosa.entities;
 
 import lombok.Data;
 import lombok.Getter;

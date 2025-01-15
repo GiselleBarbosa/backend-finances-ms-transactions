@@ -1,7 +1,7 @@
-package br.com.barbosa.transaction.controllers;
+package br.com.barbosa.controllers;
 
-import br.com.barbosa.transaction.entities.Category;
-import br.com.barbosa.transaction.services.CategoryService;
+import br.com.barbosa.entities.Category;
+import br.com.barbosa.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

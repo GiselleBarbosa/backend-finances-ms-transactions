@@ -1,4 +1,4 @@
-package br.com.barbosa.transaction.exceptions;
+package br.com.barbosa.exceptions;
 
 public class TransactionValidationException extends RuntimeException {
     public TransactionValidationException(String message) {

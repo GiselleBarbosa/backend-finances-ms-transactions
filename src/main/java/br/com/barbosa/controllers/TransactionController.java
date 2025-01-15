@@ -1,7 +1,7 @@
-package br.com.barbosa.transaction.controllers;
+package br.com.barbosa.controllers;
 
-import br.com.barbosa.transaction.entities.Transaction;
-import br.com.barbosa.transaction.services.TransactionService;
+import br.com.barbosa.entities.Transaction;
+import br.com.barbosa.services.TransactionService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

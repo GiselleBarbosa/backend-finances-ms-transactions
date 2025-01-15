@@ -1,11 +1,11 @@
-package br.com.barbosa.transaction.services;
+package br.com.barbosa.services;
 
-import br.com.barbosa.transaction.entities.Category;
-import br.com.barbosa.transaction.entities.Transaction;
-import br.com.barbosa.transaction.exceptions.TransactionNotFoundException;
-import br.com.barbosa.transaction.exceptions.TransactionValidationException;
-import br.com.barbosa.transaction.repositories.CategoryRepository;
-import br.com.barbosa.transaction.repositories.TransactionRepository;
+import br.com.barbosa.entities.Category;
+import br.com.barbosa.entities.Transaction;
+import br.com.barbosa.exceptions.TransactionNotFoundException;
+import br.com.barbosa.exceptions.TransactionValidationException;
+import br.com.barbosa.repositories.CategoryRepository;
+import br.com.barbosa.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

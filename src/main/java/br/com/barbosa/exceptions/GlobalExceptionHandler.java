@@ -1,4 +1,4 @@
-package br.com.barbosa.transaction.exceptions;
+package br.com.barbosa.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
