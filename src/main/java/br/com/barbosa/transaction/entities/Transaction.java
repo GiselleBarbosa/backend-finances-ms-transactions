@@ -1,5 +1,8 @@
 package br.com.barbosa.transaction.entities;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.Getter;
 import org.springframework.data.annotation.Id;
@@ -13,10 +16,20 @@ public class Transaction {
 
     @Id
     private String id;
+
+    @NotNull(message = "A data da transação é obrigatória")
     private String date;
+    @NotEmpty(message = "O titulo não pode ser vazio")
     private String title;
+
+    @NotNull(message = "O valor não pode ser nulo")
+    @Min(value = 0, message = "O valor deve ser maior que zero")
     private Double value;
+
+    @NotEmpty(message = "O Tipo não pode ser vazio")
     private String type;
+
+    @NotEmpty(message = "O ID da categoria não pode ser vazio")
     private String categoryId;
 
     @DBRef

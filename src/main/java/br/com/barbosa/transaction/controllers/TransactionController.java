@@ -2,6 +2,7 @@ package br.com.barbosa.transaction.controllers;
 
 import br.com.barbosa.transaction.entities.Transaction;
 import br.com.barbosa.transaction.services.TransactionService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,26 +22,29 @@ public class TransactionController {
     }
 
     @GetMapping("/{id}")
-    public Transaction getTransactionById(@PathVariable String id) {
-        return transactionService.getTransactionById(id);
+    public ResponseEntity<Transaction> getTransactionById(@PathVariable String id) {
+        Transaction transaction = transactionService.getTransactionById(id);
+        return ResponseEntity.ok(transaction);
     }
 
     @PostMapping
-    public Transaction saveTransaction(@RequestBody Transaction transaction) {
-        return transactionService.saveTransaction(transaction);
+    public ResponseEntity<Transaction> saveTransaction(@Valid @RequestBody Transaction transaction) {
+        Transaction savedTransaction = transactionService.saveTransaction(transaction);
+        return ResponseEntity.ok(savedTransaction);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Transaction> updateTransaction(
             @PathVariable String id,
-            @RequestBody Transaction updatedTransaction) {
+            @Valid @RequestBody Transaction updatedTransaction) {
         Transaction transaction = transactionService.updateTransaction(id, updatedTransaction);
         return ResponseEntity.ok(transaction);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteTransaction(@PathVariable String id) {
+    public ResponseEntity<Void> deleteTransaction(@PathVariable String id) {
         transactionService.deleteTransaction(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 }
+
