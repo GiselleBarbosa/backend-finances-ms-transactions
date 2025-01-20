@@ -13,21 +13,13 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>finances-ms-transactions</name>
     <description>finances-ms-transactions</description>
-    <url/>
-    <licenses>
-        <license/>
-    </licenses>
-    <developers>
-        <developer/>
-    </developers>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
+
     <properties>
         <java.version>21</java.version>
+        <ADMIN_EMAIL>${admin.email}</ADMIN_EMAIL>
+        <ADMIN_PASSWORD>${admin.password}</ADMIN_PASSWORD>
+        <MONGO_USERNAME>${mongo.username}</MONGO_USERNAME>
+        <MONGO_PASSWORD>${mongo.password}</MONGO_PASSWORD>
     </properties>
 
     <dependencies>
@@ -49,16 +41,24 @@
             <version>1.18.34</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <version>4.2.0</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
+
     </dependencies>
 
     <build>

@@ -32,6 +32,8 @@ public class Transaction {
     @NotEmpty(message = "O ID da categoria não pode ser vazio")
     private String categoryId;
 
+    private String userId;
+
     @DBRef
     private Category category;
 
