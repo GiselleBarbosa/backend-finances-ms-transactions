@@ -1,5 +1,7 @@
 package br.com.barbosa.services;
 
+import br.com.barbosa.client.UserClient;
+import br.com.barbosa.dtos.UserDTO;
 import br.com.barbosa.entities.Category;
 import br.com.barbosa.entities.Transaction;
 import br.com.barbosa.exceptions.TransactionNotFoundException;
@@ -20,6 +22,9 @@ public class TransactionService {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private UserClient userClient;
+
     public List<Transaction> getAllTransactions() {
         return transactionRepository.findAll();
     }
@@ -33,6 +38,11 @@ public class TransactionService {
     }
 
     public Transaction saveTransaction(Transaction transaction) {
+        UserDTO user = userClient.getUserById(transaction.getUserId());
+        if (user == null) {
+            throw new IllegalArgumentException("Usuário não encontrado para o ID: " + transaction.getUserId());
+        }
+
         if (transaction.getCategoryId() == null || transaction.getCategoryId().isEmpty()) {
             throw new TransactionValidationException("O ID da categoria fornecido não deve ser nulo ou vazio");
         }
@@ -70,5 +80,14 @@ public class TransactionService {
         }
 
         return transactionRepository.save(existingTransaction);
+    }
+
+    public List<Transaction> getTransactionsByUserId(String userId) {
+        UserDTO user = userClient.getUserById(userId);
+        if (user == null) {
+            throw new IllegalArgumentException("Usuário não encontrado para o ID: " + userId);
+        }
+
+        return transactionRepository.findByUserId(userId);
     }
 }

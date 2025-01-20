@@ -1,8 +1,15 @@
 package br.com.barbosa.controllers;
 
+import br.com.barbosa.client.UserClient;
+import br.com.barbosa.configurations.DataInitializer;
+import br.com.barbosa.dtos.TransactionDTO;
+import br.com.barbosa.dtos.UserDTO;
+import br.com.barbosa.dtos.UserTransactionDTO;
 import br.com.barbosa.entities.Transaction;
 import br.com.barbosa.services.TransactionService;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +23,11 @@ public class TransactionController {
 
     @Autowired
     private TransactionService transactionService;
+
+    @Autowired
+    private UserClient userClient;
+
+    Logger logger = LoggerFactory.getLogger(DataInitializer.class);
 
     @GetMapping
     public List<Transaction> getAllTransactions() {
@@ -47,5 +59,42 @@ public class TransactionController {
         transactionService.deleteTransaction(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/users/{userId}")
+    public ResponseEntity<UserTransactionDTO> getTransactionsAndUser(@PathVariable String userId) {
+        UserDTO user = userClient.getUserById(userId);
+        logger.info("Usuário: {}", user);
+
+        if (user == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        List<Transaction> transactions = transactionService.getTransactionsByUserId(userId);
+        List<TransactionDTO> transactionDTOs = transactions.stream()
+                .map(transaction -> {
+                    TransactionDTO dto = new TransactionDTO();
+                    dto.setId(transaction.getId());
+                    dto.setDate(transaction.getDate());
+                    dto.setTitle(transaction.getTitle());
+                    dto.setValue(transaction.getValue());
+                    dto.setType(transaction.getType());
+
+                    logger.info("Transação: {}", dto);
+
+                    return dto;
+                })
+                .toList();
+
+        UserTransactionDTO response = new UserTransactionDTO();
+        response.setUserId(user.getUserId());
+        response.setUserName(user.getUserName());
+        response.setUserEmail(user.getUserEmail());
+        response.setTransactions(transactionDTOs);
+
+        logger.info("Resposta: {}", response);
+
+        return ResponseEntity.ok(response);
+    }
+
 }
 

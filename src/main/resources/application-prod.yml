@@ -5,7 +5,7 @@ spring:
   data:
     mongodb:
       uri: mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@finances.ol6kb.mongodb.net/?retryWrites=true&w=majority&appName=finances
-      database: financesdbdev
+      database: financesdb
 
   jpa:
     hibernate:
