@@ -5,7 +5,6 @@
 
 # Ignorar arquivos de controle de versão
 .git
-.gitignore
 
 # Ignorar IDEs e ambientes de desenvolvimento
 *.iml
@@ -13,5 +12,4 @@
 .vscode/
 
 # Ignorar arquivos gerados por builds
-target/
 build/
