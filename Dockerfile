@@ -2,7 +2,8 @@ FROM amazoncorretto:21
 
 WORKDIR /app
 
-COPY . .
+COPY pom.xml ./
+COPY src ./src
 
 RUN yum install -y tar gzip
 
