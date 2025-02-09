@@ -11,10 +11,14 @@ RUN yum install -y tar gzip
 
 RUN chmod +x mvnw
 
-RUN ./mvnw package -DskipTests
+RUN ./mvnw clean package -DskipTests
 
 RUN ls -l target/
 
-COPY target/*.jar app.jar
+ARG JAR_FILE=target/*.jar
 
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+COPY ${JAR_FILE} app.jar
+
+RUN bash -c 'touch /app.jar'
+
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app/app.jar"]
