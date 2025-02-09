@@ -10,4 +10,8 @@ RUN chmod +x mvnw
 
 RUN ./mvnw package -DskipTests
 
+RUN ls -l target/
+
 COPY target/*.jar app.jar
+
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
