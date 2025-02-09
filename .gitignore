@@ -1,6 +1,5 @@
 # Arquivos de ajuda e metadados de build
 HELP.md
-target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
