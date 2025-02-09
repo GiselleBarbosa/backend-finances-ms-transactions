@@ -15,9 +15,7 @@ RUN ./mvnw clean package -DskipTests
 
 RUN ls -l target/
 
-ARG JAR_FILE=target/*.jar
-
-COPY ${JAR_FILE} app.jar
+COPY target/finances-ms-transactions-0.0.1-SNAPSHOT.jar app.jar
 
 RUN bash -c 'touch /app.jar'
 
