@@ -10,6 +10,3 @@
 *.iml
 .idea/
 .vscode/
-
-# Ignorar arquivos gerados por builds
-build/
