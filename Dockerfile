@@ -3,6 +3,8 @@ FROM amazoncorretto:21
 WORKDIR /app
 
 COPY pom.xml ./
+COPY mvnw ./
+COPY .mvn .mvn
 COPY src ./src
 
 RUN yum install -y tar gzip
