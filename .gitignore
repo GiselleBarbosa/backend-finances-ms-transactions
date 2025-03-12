@@ -10,6 +10,7 @@ HELP.md
 # Gradle e builds
 .gradle/
 build/
+target
 !**/src/main/**/build/
 !**/src/test/**/build/
 .gradle-cache/
