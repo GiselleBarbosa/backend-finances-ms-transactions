@@ -8,7 +8,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class CorsConfig {
-    @Value("${ALLOWED_ORIGINS}")
+
+    @Value("${ALLOWED_ORIGINS:}")
     private String allowedOrigins;
 
     @Bean
@@ -17,11 +18,17 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins(allowedOrigins, "http://localhost:4200")
+                        .allowedOrigins(getAllowedOrigin())
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
             }
         };
     }
+
+    private String getAllowedOrigin() {
+        String envOrigin = System.getenv("ALLOWED_ORIGINS");
+        return (envOrigin != null && !envOrigin.isBlank()) ? envOrigin : "http://localhost:4200";
+    }
 }
+
