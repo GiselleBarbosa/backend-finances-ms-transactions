@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "https://finances-peach-sigma.vercel.app")
+@CrossOrigin(origins = "*")
 @RequestMapping("/transactions")
 public class TransactionController {
 
