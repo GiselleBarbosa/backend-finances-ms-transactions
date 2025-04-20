@@ -1,6 +1,5 @@
 package br.com.barbosa.configurations;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -15,11 +14,11 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/transactions")
-                        .allowedOrigins("http://localhost:4200", "https://finances-fawn.vercel.app")
+                        .allowedOrigins("http://localhost:4200", "https://finances-git-main-tiagobarbosadevgmailcoms-projects.vercel.app/")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*");
                 registry.addMapping("/categories")
-                        .allowedOrigins("http://localhost:4200", "https://finances-fawn.vercel.app")
+                        .allowedOrigins("http://localhost:4200", "https://finances-git-main-tiagobarbosadevgmailcoms-projects.vercel.app/")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*");
             }
