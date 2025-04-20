@@ -13,12 +13,11 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/transactions")
-                        .allowedOrigins("*") // TEMPORÁRIO PARA TESTE
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                        .allowedHeaders("*");
-                registry.addMapping("/categories")
-                        .allowedOrigins("*") // TEMPORÁRIO PARA TESTE
+                registry.addMapping("/**")
+                        .allowedOrigins(
+                                "http://localhost:4200",
+                                "https://finances-git-main-tiagobarbosadevgmailcoms-projects.vercel.app/",
+                                "https://finances-fawn.vercel.app")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*");
             }
