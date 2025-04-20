@@ -14,11 +14,11 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/transactions")
-                        .allowedOrigins("http://localhost:4200", "https://finances-git-main-tiagobarbosadevgmailcoms-projects.vercel.app/")
+                        .allowedOrigins("*") // TEMPORÁRIO PARA TESTE
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*");
                 registry.addMapping("/categories")
-                        .allowedOrigins("http://localhost:4200", "https://finances-git-main-tiagobarbosadevgmailcoms-projects.vercel.app/")
+                        .allowedOrigins("*") // TEMPORÁRIO PARA TESTE
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*");
             }
