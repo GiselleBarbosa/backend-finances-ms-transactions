@@ -13,7 +13,12 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
+                registry.addMapping("/api/transactions/**")
+                        .allowedOrigins("https://finances-fawn.vercel.app", "http://localhost:4200")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedHeaders("Content-Type")
+                        .allowCredentials(false);
+                registry.addMapping("/api/categories/**")
                         .allowedOrigins("https://finances-fawn.vercel.app", "http://localhost:4200")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("Content-Type")
