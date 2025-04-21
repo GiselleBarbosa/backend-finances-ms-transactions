@@ -14,9 +14,10 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("https://finances-fawn.vercel.app")
+                        .allowedOrigins("https://finances-fawn.vercel.app", "http://localhost:4200")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                        .allowedHeaders("*");
+                        .allowedHeaders("Content-Type", "Authorization")
+                        .allowCredentials(false);
             }
         };
     }
