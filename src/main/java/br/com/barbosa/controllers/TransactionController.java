@@ -18,7 +18,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/transactions")
-@CrossOrigin(origins = "https://finances-fawn.vercel.app", allowedHeaders = "Content-Type")
 public class TransactionController {
 
     @Autowired
